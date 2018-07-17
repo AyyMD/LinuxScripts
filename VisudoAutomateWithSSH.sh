@@ -15,21 +15,21 @@ read -r Group
 Group="%FULTON\\\\\\$Group	ALL=(ALL:ALL) ALL"
 CidseItGroup='\''%FULTON\\\cidse-it	ALL=(ALL:ALL) ALL'\''
 # add to the sudo file
-cat /etc/sudoers > /etc/sudoers.tmp
-echo "$Group" >> -a /etc/sudoers.tmp
-echo "$CidseItGroup" >> -a /etc/sudoers.tmp
+sudo cat /etc/sudoers > /etc/sudoers.tmp
+sudo echo "$Group" >> -a /etc/sudoers.tmp
+sudo echo "$CidseItGroup" >> -a /etc/sudoers.tmp
 clear
 echo "Output of sudoers file"
 echo
-cat /etc/sudoers.tmp
+sudo cat /etc/sudoers.tmp
 echo
 echo "Does the contents of the file look correct? [y/N]"
 read -r answer
 
 if [[ $answer = [yY] ]]; then
-    cp /etc/sudoers.tmp /etc/sudoers
+    sudo cp /etc/sudoers.tmp /etc/sudoers
 else
     echo "Not commiting changes. Now exiting"
 fi
-rm /etc/sudoers.tmp
+sudo rm /etc/sudoers.tmp
 '
